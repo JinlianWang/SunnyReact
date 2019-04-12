@@ -1,11 +1,31 @@
-import React, { Component } from 'react';
 import classes from './App.scss';
+import React from 'react';
 
-class App extends Component{
-   render(){
-      return(
-         <div className={classes.app}>
-            <h1>Hello World</h1>
+class App extends React.Component {
+   render() {
+      return (
+         <div>
+            <Header/>
+            <Content/>
+         </div>
+      );
+   }
+}
+class Header extends React.Component {
+   render() {
+      return (
+         <div>
+            <h1 className={classes.app}>Header</h1>
+         </div>
+      );
+   }
+}
+class Content extends React.Component {
+   render() {
+      return (
+         <div>
+            <h2>Content</h2>
+            <p>The content text!!!</p>
          </div>
       );
    }
