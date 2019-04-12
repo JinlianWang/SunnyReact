@@ -8,7 +8,21 @@ class App extends React.Component {
       super(props);
       
       this.state = {
-         data: 'Initial data...'
+         data: 'Initial data...', 
+         array: [
+            {
+               component: 'First...',
+               id: 1
+            },
+            {
+               component: 'Second...',
+               id: 2
+            },
+            {
+               component: 'Third...',
+               id: 3
+            }
+         ]
       }
       this.updateState = this.updateState.bind(this);
       this.clearState = this.clearState.bind(this);
@@ -27,8 +41,24 @@ class App extends React.Component {
                onChange = {this.updateState} />
             <button className={classes.app} onClick = {this.clearState}>CLICK</button>
             <h4>{this.state.data}</h4>
+            <div>
+               {this.state.array.map((dynamicComponent, i) => <Content 
+                  key = {i} componentData = {dynamicComponent}/>)}
+            </div>
          </div>
       );
    }
 }
+
+class Content extends React.Component {
+   render() {
+      return (
+         <div>
+            <div>{this.props.componentData.component}</div>
+            <div>{this.props.componentData.id}</div>
+         </div>
+      );
+   }
+}
+
 export default App;
