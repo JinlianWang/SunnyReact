@@ -1,5 +1,6 @@
 import React from 'react';
 import classes from './App.scss';
+import ReactDOM from 'react-dom';
 
 
 class App extends React.Component {
@@ -17,11 +18,12 @@ class App extends React.Component {
    }
    clearState(e) {
       this.setState({data: 'Initial data...'});
+      ReactDOM.findDOMNode(this.refs.myInput).focus();
    }
    render() {
       return (
          <div>
-            <input type = "text" value = {this.state.data} 
+            <input ref = "myInput" type = "text" value = {this.state.data} 
                onChange = {this.updateState} />
             <button className={classes.app} onClick = {this.clearState}>CLICK</button>
             <h4>{this.state.data}</h4>
